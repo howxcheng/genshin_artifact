@@ -24,11 +24,6 @@ jobs:
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
-      # 2. 克隆指定的外部仓库
-      - name: Clone external repository
-        run: |
-          # 替换下面的 URL 为你指定的 git 地址
-          git clone https://github.com/wormtql/genshin_artifact.git genshin_artifact
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -42,7 +37,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./genshin_artifact
+          context: .
           platforms: linux/amd64, linux/arm64
           push: true
           tags: |
